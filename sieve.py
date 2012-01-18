@@ -18,14 +18,14 @@ def primes():
     while True:
         n += 1
         if relatively_prime(n):
-            yield n
             primes.append((n, n**2))
+            yield primes[-1]
 
 
 def factor(n):
     """Factor an integer into its unique prime factorization."""
-    for p in primes():
-        if p > n: 
+    for p, p2 in primes():
+        if n < p2:
             break
         while n % p == 0:
             yield p

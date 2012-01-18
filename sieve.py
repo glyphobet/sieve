@@ -29,10 +29,10 @@ def factor(n):
             break
         while n % p == 0:
             yield p
-            n = n / p
+            n = n // p
     if n > 1:
         yield n
 
 
 for arg in sys.argv[1:]:
-    print arg + ': ' + ' '.join(map(str, factor(int(arg))))
+    print(arg + ': ' + ' '.join(map(str, factor(int(arg)))))

@@ -1,7 +1,9 @@
 #!/usr/bin/env python
 import sys
 
+
 def primes():
+    """A generator that yields primes forever."""
     n = 1
     primes = []
 
@@ -19,7 +21,9 @@ def primes():
             yield n
             primes.append((n, n**2))
 
+
 def factor(n):
+    """Factor an integer into its unique prime factorization."""
     for p in primes():
         if p > n: 
             break

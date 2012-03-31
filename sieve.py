@@ -26,7 +26,7 @@ def factor(n):
     """Factor an integer into its unique prime factorization."""
     for p, p2 in primes():
         if n < p2:
-            break
+            break # if n were divisible by p we would have hit another factor by now
         while n % p == 0:
             yield p
             n = n // p

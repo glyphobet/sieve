@@ -1,6 +1,9 @@
 """
 >>> from sieve import factor
 
+>>> list(factor(0))
+[0]
+
 >>> list(factor(1))
 [1]
 

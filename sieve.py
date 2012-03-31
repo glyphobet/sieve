@@ -24,6 +24,9 @@ def primes():
 
 def factor(n):
     """Factor an integer into its unique prime factorization."""
+    if n <= 1:
+        yield n
+        return
     for p, p2 in primes():
         if n < p2:
             break # if n were divisible by p we would have hit another factor by now
@@ -35,4 +38,4 @@ def factor(n):
 
 
 for arg in sys.argv[1:]:
-    print(arg + ': ' + ' '.join(map(str, factor(int(arg)))))
+    print(arg + ': ' + ' '.join(map(str, factor(abs(int(arg))))))

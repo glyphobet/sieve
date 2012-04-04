@@ -1,35 +1,33 @@
 #!/usr/bin/env python
 import sys
 
-
-def primes():
+def generate_primes():
     """A generator that yields primes forever."""
     n = 1
     primes = []
 
-    def relatively_prime(n):
-        for p, p2 in primes:
-            if n < p2:
-                return True # is prime because if it were not, we would have hit a factor by now
-            elif n % p == 0:
-                return False # is not prime because modulo p == 0
-        return True # primes is empty so this is the first prime, 2
-
     while True:
         n += 1
-        if relatively_prime(n):
+        n_factor = factor(n, primes)
+        n_factor.next()
+        try:
+            n_factor.next() # n has two factors, it's not prime
+            continue
+        except StopIteration: # n has one factor, it's prime
             primes.append((n, n**2))
             yield primes[-1]
 
 
-def factor(n):
-    """Factor an integer into its unique prime factorization."""
+def factor(n, primes=None):
+    """Factor an integer into its unique prime decomposition."""
+    if primes is None:
+        primes = generate_primes()
     if n <= 1:
         yield n
         return
-    for p, p2 in primes():
+    for p, p2 in primes:
         if n < p2:
-            break # if n were divisible by p we would have hit another factor by now
+            break # if n is < p*p, we have yielded all factors by now
         while n % p == 0:
             yield p
             n = n // p

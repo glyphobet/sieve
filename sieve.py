@@ -20,11 +20,11 @@ def generate_primes():
 
 def factor(n, primes=None):
     """Factor an integer into its unique prime decomposition."""
-    if primes is None:
-        primes = generate_primes()
-    if n <= 1:
+    if n <= 1: # handle 0 and 1
         yield n
         return
+    if primes is None:
+        primes = generate_primes()
     for p, p2 in primes:
         if n < p2:
             break # if n is < p*p, we have yielded all factors by now

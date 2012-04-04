@@ -8,7 +8,7 @@ def generate_primes():
 
     while True:
         n += 1
-        if n == factor(n, primes).next(): # if n is its own (first) factor, it's prime
+        if n == next(factor(n, primes)): # if n is its own (first) factor, it's prime
             primes.append((n, n**2))
             yield primes[-1]
 

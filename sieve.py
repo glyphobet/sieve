@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 import sys
 
-def generate_primes(primes=[(2, 4)]):
+def sieve(primes=[(2, 4)]):
     """A generator that yields primes forever. Also caches primes for use in subsequent calls."""
     for p in primes:
         yield p
@@ -20,7 +20,7 @@ def factor(n, primes=None):
         yield n
         return
     if primes is None:
-        primes = generate_primes()
+        primes = sieve()
     for p, p2 in primes:
         if n < p2:
             break # if n is < p*p, we have yielded all factors by now

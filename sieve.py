@@ -1,11 +1,12 @@
 #!/usr/bin/env python
 import sys
 
-def generate_primes():
-    """A generator that yields primes forever."""
-    n = 1
-    primes = []
+def generate_primes(primes=[(2, 4)]):
+    """A generator that yields primes forever. Also caches primes for use in subsequent calls."""
+    for p in primes:
+        yield p
 
+    n, _ = primes[-1]
     while True:
         n += 1
         if n == next(factor(n, primes)): # if n is its own (first) factor, it's prime

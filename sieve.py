@@ -9,16 +9,13 @@ def sieve(primes=[(2, 4)]):
     n, _ = primes[-1]
     while True:
         n += 1
-        if n == next(factor(n, primes)): # if n is its own (first) factor, it's prime
+        if n == next(_factor(n, primes)): # if n is its own (first) factor, it's prime
             primes.append((n, n**2))
             yield primes[-1]
 
 
-def factor(n, primes=None):
+def _factor(n, primes=None):
     """Factor an integer into its unique prime decomposition."""
-    if n <= 1: # handle 0 and 1
-        yield n
-        return
     primes = primes or sieve()
     for p, p2 in primes:
         if n < p2:
@@ -28,6 +25,15 @@ def factor(n, primes=None):
             n = n // p
     if n > 1:
         yield n
+
+
+def factor(n):
+    """Wrapper that handles 0 and 1."""
+    if n <= 1:
+        yield n
+    else:
+        for p in _factor(n):
+            yield p
 
 
 for arg in sys.argv[1:]:

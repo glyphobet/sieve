@@ -19,8 +19,7 @@ def factor(n, primes=None):
     if n <= 1: # handle 0 and 1
         yield n
         return
-    if primes is None:
-        primes = sieve()
+    primes = primes or sieve()
     for p, p2 in primes:
         if n < p2:
             break # if n is < p*p, we have yielded all factors by now

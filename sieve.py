@@ -22,7 +22,7 @@ def _factor(n, primes=None):
             break # if n is < p*p, we have yielded all factors by now
         while n % p == 0:
             yield p
-            n = n // p
+            n //= p
     if n > 1:
         yield n
 

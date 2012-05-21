@@ -1,3 +1,4 @@
+#!/usr/bin/env python33
 """
 >>> from sieve import factor
 

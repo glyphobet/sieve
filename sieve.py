@@ -1,10 +1,9 @@
-#!/usr/bin/env python
+#!/usr/bin/env python33
 import sys
 
 def sieve(primes=[(2, 4)]):
     """A generator that yields primes forever. Also caches primes for use in subsequent calls."""
-    for p in primes:
-        yield p
+    yield from primes
 
     n, _ = primes[-1]
     while True:
@@ -32,8 +31,7 @@ def factor(n):
     if n <= 1:
         yield n
     else:
-        for p in _factor(n):
-            yield p
+        yield from _factor(n)
 
 
 for arg in sys.argv[1:]:

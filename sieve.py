@@ -33,6 +33,6 @@ def factor(n):
     else:
         yield from _factor(n)
 
-
-for arg in sys.argv[1:]:
-    print(arg + ': ' + ' '.join(map(str, factor(abs(int(arg))))))
+if __name__ == '__main__':
+    for arg in sys.argv[1:]:
+        print(arg + ': ' + ' '.join(map(str, factor(abs(int(arg))))))

@@ -15,8 +15,7 @@ def sieve(primes=[(2, 4)]):
 
 def _factor(n, primes=None):
     """Factor an integer into its unique prime decomposition."""
-    primes = primes or sieve()
-    for p, p2 in primes:
+    for p, p2 in primes or sieve():
         if n < p2:
             break # if n is < p*p, we have yielded all factors by now
         while n % p == 0:

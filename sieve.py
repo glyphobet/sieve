@@ -1,4 +1,4 @@
-#!/usr/bin/env python33
+#!/usr/bin/env python3.3
 import sys
 
 def sieve(primes=[(2, 4)]):
